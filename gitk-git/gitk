@@ -228,7 +228,15 @@ proc parseviewargs {n arglist} {
             "--until=*" - "--before=*" - "--max-age=*" - "--min-age=*" -
             "--author=*" - "--committer=*" - "--grep=*" - "-[iE]" -
             "--remove-empty" - "--first-parent" - "--cherry-pick" -
-            "-S*" - "-G*" - "--pickaxe-all" - "--pickaxe-regex" -
+            "-S*" - "--patch-modifies=*" -
+            "--patch-modifies" {
+              set nextisval 1
+            }
+            "-G*" - "--patch-grep=*" -
+            "--patch-grep" {
+              set nextisval 1
+            }
+            "--pickaxe-all" - "--pickaxe-regex" -
             "--simplify-by-decoration" {
                 # These mean that we get a subset of the commits
                 set filtered 1
